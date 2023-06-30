@@ -1,0 +1,7 @@
+uvicorn
+fastapi
+sqlalchemy
+python-dotenv
+requests
+psycopg2-binary
+watchfiles
