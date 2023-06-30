@@ -2,7 +2,7 @@
 
 This Python script allows you to preprocess King County data by providing a file as an argument, which can be in CSV, XLSX, JSON, or PKL format. The preprocessing pipeline includes data cleaning and feature engineering, making it easier to define the features and label for further analysis or modeling
 
-1. Navigate to the cloned repository directory:
+1. Navigate to the directory:
     ```bash
     cd pipeline
     ```
