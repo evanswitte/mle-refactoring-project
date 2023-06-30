@@ -1,3 +1,30 @@
+#  King County Data Preprocessing Datapipeline
+
+This Python script allows you to preprocess King County data by providing a file as an argument, which can be in CSV, XLSX, JSON, or PKL format. The preprocessing pipeline includes data cleaning and feature engineering, making it easier to define the features and label for further analysis or modeling
+
+1. Navigate to the cloned repository directory:
+    ```bash
+    cd pipeline
+    ```
+
+2. Ensure that your King County data is in CSV, XLSX, JSON, or PKL format.
+
+
+3. Run the script with the file path argument:
+    ```bash
+    python preprocessing_pipeline.py path/to/your/file.csv
+    ````
+> NOTE: Replace path/to/your/file.csv with the actual file path to your data file.
+
+The script reads the King County data from the provided file, performs data cleaning and feature engineering, and saves the preprocessed result to a new file.
+
+The preprocessed DataFrame now contains clean data and additional features that can be used for further analysis or modeling purposes.
+
+You can use the preprocessed DataFrame in your code or another script to train models or perform additional analysis.
+
+
+<br>
+
 # King County Real Estate API
 
 This repository contains a FastAPI implementation of the King County Real Estate API. It allows users to access real estate data from King County, such as property information, prices, and locations(zipcodes), through a RESTful API.
