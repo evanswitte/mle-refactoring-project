@@ -8,3 +8,12 @@ scikit-learn
 scipy
 skops
 pytest
+uvicorn
+fastapi
+sqlalchemy
+python-dotenv
+requests
+psycopg2-binary
+watchfiles
+pandas
+pytest
