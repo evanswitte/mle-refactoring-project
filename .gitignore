@@ -137,7 +137,7 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
+postgres-db-*
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -148,6 +148,7 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+.vscode/
 
 # Cython debug symbols
 cython_debug/
