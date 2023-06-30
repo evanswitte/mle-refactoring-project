@@ -1,4 +1,5 @@
 from database import Base
+from pydantic import BaseModel
 from sqlalchemy import Column, Float, Integer
 from sqlalchemy.orm import validates
 
@@ -10,6 +11,7 @@ class House(Base):
     bathrooms = Column(Float)
     floors = Column(Float)
     zipcode = Column(Integer)
+    price = Column(Integer)
     last_change = Column(Integer)
 
     @validates("zipcode")

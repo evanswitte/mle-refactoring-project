@@ -1,29 +1,32 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class HousePost(BaseModel):
-    bedrooms = int
-    bathrooms = float
-    floors = float
-    zipcode = int
-    last_change = int
+    bedrooms: int = Field(description="Number of bedrooms")
+    bathrooms: float = Field(description="Number of bathrooms")
+    floors: float = Field(description="How many floors")
+    zipcode: int = Field(description="Which side of King County ( Zipcode )")
+    price: int = Field(description="Last sold price")
+    last_change: int = Field(description="year of the last renovation")
 
     class Config:
         orm_mode = True
 
 
 class HouseGet(BaseModel):
-    bedrooms = int
-    bathrooms = float
-    floors = float
-    zipcode = int
+    bedrooms: int = Field(description="Number of bedrooms")
+    bathrooms: float = Field(description="Number of bathrooms")
+    floors: float = Field(description="How many floors")
+    zipcode: int = Field(description="Which side of King County ( Zipcode )")
+    price: int = Field(description="Last sold price")
 
     class Config:
         orm_mode = True
 
 
 class HouseUpdate(BaseModel):
-    last_change = int
+    price: int = Field(description="Last sold price")
+    last_change: int = Field(description="year of the last renovation")
 
     class Config:
         orm_mode = True
