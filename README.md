@@ -12,7 +12,7 @@ This Python script allows you to preprocess King County data by providing a file
 
 3. Run the script with the file path argument:
     ```bash
-    python preprocessing_pipeline.py path/to/your/file.csv
+    python processor.py path/to/your/file.csv
     ````
 > NOTE: Replace path/to/your/file.csv with the actual file path to your data file.
 
