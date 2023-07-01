@@ -29,19 +29,19 @@ class HousePost(BaseModel):
 
 
 class HouseGet(BaseModel):
-    bedrooms: conint(gt=0) = Field(
+    bedrooms: int = Field(
         description="It represents the count of separate rooms intended for sleeping"
     )
-    bathrooms: confloat(gt=0.0) = Field(
+    bathrooms: float = Field(
         description="It represents the count of separate areas containing toilet and bathing facilities"
     )
-    floors: confloat(ge=0.0) = Field(
+    floors: float = Field(
         description="It represents the count of levels or stories in the building structure"
     )
-    zipcode: conint(ge=10000, le=99999) = Field(
+    zipcode: int = Field(
         description="The 5-digit ZIP code representing the location in King County"
     )
-    price: conint(ge=1) = Field(
+    price: int = Field(
         description="Last sold price. It represents the price at which the house was last sold"
     )
 
