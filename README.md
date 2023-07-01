@@ -2,15 +2,20 @@
 
 This Python script allows you to preprocess King County data by providing a file as an argument, which can be in CSV, XLSX, JSON, or PKL format. The preprocessing pipeline includes data cleaning and feature engineering, making it easier to define the features and label for further analysis or modeling
 
-1. Navigate to the directory:
+1. Clone this repository to your local machine:
+    ```bash
+    git clone https://github.com/your-username/mle-refactoring-project.git
+    ```
+
+2. Navigate to the directory:
     ```bash
     cd pipeline
     ```
 
-2. Ensure that your King County data is in CSV, XLSX, JSON, or PKL format.
+3. Ensure that your King County data is in CSV, XLSX, JSON, or PKL format.
 
 
-3. Run the script with the file path argument:
+4. Run the script with the file path argument:
     ```bash
     python processor.py path/to/your/file.csv
     ````
@@ -38,23 +43,19 @@ Before running the API, make sure you have the following dependencies installed:
 ## Getting Started
 To get started with the King County Real Estate API, follow these steps:
 
-1. Clone this repository to your local machine:
-    ```bash
-    git clone https://github.com/your-username/mle-refactoring-project.git
-    ```
 
-2. Create a .env file in the project directory and provide the necessary environment variables.
+1. Create a .env file in the project directory and provide the necessary environment variables.
     ```bash
     vim .env
     ```
     >NOTE: Make sure to update the values in the .env file according to your setup.
-3. Start the application using Docker Compose:
+2. Start the application using Docker Compose:
     ```bash
     docker-compose up -d
     ```
 This will start the FastAPI application and a PostgreSQL database container.
 
-4. Wait for the containers to start up. You can check the logs using the following command:
+3. Wait for the containers to start up. You can check the logs using the following command:
     ```bash
     docker-compose logs -f
     ```
