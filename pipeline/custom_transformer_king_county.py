@@ -4,9 +4,13 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class BathBedRoomTransformer(BaseEstimator, TransformerMixin):
+    """Transformer class to create the 'bath_bed_ratio' feature and filter data.
+    Creates a new feature 'bath_bed_ratio' by dividing the number of bathrooms by the number of bedrooms. It also filters out rows
+    based on specific conditions of the 'bath_bed_ratio'.
+    """
+
     def fit(self, X, y=None):
         return self
-    
 
     def transform(self, X, y=None):
         X.copy()
@@ -17,12 +21,17 @@ class BathBedRoomTransformer(BaseEstimator, TransformerMixin):
             elif ratio <= 0.10:
                 X.drop(idx, inplace=True)
         return X
-    
-    
+
+
 class SqftBasementTransformer(BaseEstimator, TransformerMixin):
+    """Transformer class to process the 'sqft_basement' feature. Performs transformations on the 'sqft_basement'
+    feature. It replaces missing values indicated by '?' with NaN, calculates the square footage
+    of the basement by subtracting 'sqft_above' from 'sqft_living', and converts the datatype
+    of 'sqft_basement' to float.
+    """
+
     def fit(self, X, y=None):
         return self
-    
 
     def transform(self, X, y=None):
         X.copy()
@@ -30,24 +39,35 @@ class SqftBasementTransformer(BaseEstimator, TransformerMixin):
         X["sqft_basement"] = X["sqft_living"] - X["sqft_above"]
         X["sqft_basement"] = X["sqft_basement"].astype(float)
         return X
-    
+
 
 class ViewWaterfrontTransformer(BaseEstimator, TransformerMixin):
+    """Transformer class to process the 'view' and 'waterfront' features. Performs transformations on the 'view' and 'waterfront'
+    features. It fills missing values in 'view' and 'waterfront' columns with 0.
+    """
+
     def fit(self, X, y=None):
         return self
-    
-    def transform(self,X, y=None):
+
+    def transform(self, X, y=None):
         X.copy()
         X["view"] = X["view"].fillna(0)
         X["waterfront"] = X["waterfront"].fillna(0)
         return X
-    
+
 
 class LastKnownChangeTransformer(BaseEstimator, TransformerMixin):
+    """Transformer class to process the 'yr_renovated' and 'yr_built' features. Performs transformations on the 'yr_renovated' and 'yr_built'
+    features. It creates a new feature 'last_known_change' that represents the last known change in the property,
+    either through renovation or construction. If 'yr_renovated' is missing or equal to 0, it takes the 'yr_built'
+    value as the last known change. Otherwise, it takes the 'yr_renovated' value. It also drops the 'yr_renovated'
+    and 'yr_built' columns from the DataFrame.
+    """
+
     def fit(self, X, y=None):
         return self
-    
-    def transform(self,X, y=None):
+
+    def transform(self, X, y=None):
         X.copy()
         last_known_change = []
         for idx, yr_re in X.yr_renovated.items():

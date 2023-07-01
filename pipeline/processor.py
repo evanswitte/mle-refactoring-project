@@ -7,7 +7,27 @@ from preprocessing_king_county import PreprocessingKingCountyData
 PREPROCESSOR = PreprocessingKingCountyData()
 
 
-def load_file_to_dataframe(file_path):
+def load_file_to_dataframe(file_path: str) -> pd.DataFrame:
+    """Load a file into a Pandas DataFrame.
+
+    This function reads the file located at the given file path and returns a Pandas DataFrame.
+    The file format is determined based on the file extension.
+
+    Parameters:
+    ----------
+    file_path : str
+        Path to the file to be loaded.
+
+    Returns:
+    ----------
+    df : DataFrame
+        Loaded DataFrame.
+
+    Raises:
+    ----------
+    ValueError:
+        If the file extension is not supported.
+    """
     _, file_extension = os.path.splitext(file_path)
 
     if file_extension.lower() == ".csv":
@@ -25,7 +45,18 @@ def load_file_to_dataframe(file_path):
     return df
 
 
-def main():
+def main() -> None:
+    """Main function to run the data preprocessing script.
+
+    This function is the entry point of the script. It expects the file path to be specified as a command-line argument.
+    The file is loaded into a Pandas DataFrame, preprocessed using the predefined PREPROCESSOR, and the transformed DataFrame
+    is saved as a CSV file.
+
+    Raises:
+    ----------
+    ValueError:
+        If the file path is not provided as an argument.
+    """
     if len(sys.argv) < 2:
         print("Please specify the file path as an argument.")
         sys.exit(1)
