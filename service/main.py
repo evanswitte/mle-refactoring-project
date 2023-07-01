@@ -88,7 +88,6 @@ def create_house(request: schemas.HousePost, db: Session = Depends(get_db)):
     return new_house
 
 
-# update house
 @app.put("/houses/{id}")
 def update_house(id: int, request: schemas.HouseUpdate, db: Session = Depends(get_db)):
     """Updates the last year of renovation and the price of the House.
@@ -115,7 +114,7 @@ def update_house(id: int, request: schemas.HouseUpdate, db: Session = Depends(ge
 
 
 @app.delete("/houses/{id}")
-def delete(id: int, db: Session = Depends(get_db)):
+def delete_house(id: int, db: Session = Depends(get_db)):
     """Deletes the house from the database.
 
     Args:
