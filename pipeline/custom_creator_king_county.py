@@ -1,15 +1,26 @@
+from abc import ABC
+
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
-class SqftPriceCreator(BaseEstimator, TransformerMixin):
-    """Transformer class to create the 'sqft_price' feature in a DataFrame.
-    by dividing the 'price' column by the sum of 'sqft_living' and 'sqft_lot' columns.
+class AbstractTransformer(ABC):
+    """
+    This (abstract) transformer is to be inherited by the other transformers.
+    It may not be instantiated on its own. Implements 'fit' method and checks whether 'X' is a DataFrame
     """
 
     def fit(self, X, y=None):
+        if not isinstance(X, pd.DataFrame):
+            raise TypeError("The input 'X' must be a pandas.DataFrame")
         return self
+
+
+class SqftPriceCreator(BaseEstimator, TransformerMixin, AbstractTransformer):
+    """Transformer class to create the 'sqft_price' feature in a DataFrame.
+    by dividing the 'price' column by the sum of 'sqft_living' and 'sqft_lot' columns.
+    """
 
     def transform(self, X, y=None):
         X.copy()
@@ -17,13 +28,10 @@ class SqftPriceCreator(BaseEstimator, TransformerMixin):
         return X
 
 
-class CenterDistanceCreator(BaseEstimator, TransformerMixin):
+class CenterDistanceCreator(BaseEstimator, TransformerMixin, AbstractTransformer):
     """Transformer class to create distance-related features based on center coordinates.
     Creates three new features: 'delta_lat','delta_long', and 'center_distance' based on the latitude and longitude of each
     property in relation to a center location."""
-
-    def fit(self, X, y=None):
-        return self
 
     def transform(self, X, y=None):
         X.copy()
@@ -56,14 +64,11 @@ def dist(long, lat, ref_long, ref_lat):
     )
 
 
-class WaterDistanceCreator(BaseEstimator, TransformerMixin):
+class WaterDistanceCreator(BaseEstimator, TransformerMixin, AbstractTransformer):
     """Transformer class to create the 'water_distance' feature based on waterfront proximity.
     Calculates the distance between each property and the waterfront. It creates a new feature called 'water_distance' that represents the
     minimum distance to the waterfront for each property.
     """
-
-    def fit(self, X, y=None):
-        return self
 
     def transform(self, X, y=None):
         X.copy()
@@ -80,13 +85,10 @@ class WaterDistanceCreator(BaseEstimator, TransformerMixin):
         return X
 
 
-class DropNoPredictionValues(BaseEstimator, TransformerMixin):
+class DropNoPredictionValues(BaseEstimator, TransformerMixin, AbstractTransformer):
     """Transformer class to drop irrelevant columns from a DataFrame. Drops specified columns from the DataFrame.
     It is used to remove columns that are not relevant for prediction purposes.
     """
-
-    def fit(self, X, y=None):
-        return self
 
     def transform(self, X, y=None):
         X.copy()
