@@ -6,16 +6,23 @@ This Python script allows you to preprocess King County data by providing a file
     ```bash
     git clone https://github.com/your-username/mle-refactoring-project.git
     ```
+2. Create a virtual environment and install the listed [requirements.txt](./requirements.txt):
+   ```bash
+    pyenv local 3.11.3
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    ``` 
 
-2. Navigate to the directory:
+3. Navigate to the directory:
     ```bash
     cd pipeline
     ```
 
-3. Ensure that your King County data is in CSV, XLSX, JSON, or PKL format.
+4. Ensure that your King County data is in CSV, XLSX, JSON, or PKL format.
 
 
-4. Run the script with the file path argument:
+5. Run the script with the file path argument:
     ```bash
     python processor.py path/to/your/file.csv
     ````
@@ -83,10 +90,3 @@ docker-compose down
 ````
 
 The necessary libraries are listed in the [requirements.txt](./requirements.txt) file. You can install them with the following command:
-
-```bash
-pyenv local 3.11.3
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
