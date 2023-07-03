@@ -20,7 +20,6 @@ class HousePost(BaseModel):
         description="Last sold price. It represents the price at which the house was last sold"
     )
     last_change: Optional[conint(ge=1000, le=9999)] = Field(
-        None,
         description="Year of the last renovation of the house. It indicates the most recent year when renovations or improvements were made.",
     )
 
@@ -43,6 +42,9 @@ class HouseGet(BaseModel):
     )
     price: int = Field(
         description="Last sold price. It represents the price at which the house was last sold"
+    )
+    last_change: Optional[conint(ge=1000, le=9999)] = Field(
+        description="Year of the last renovation of the house. It indicates the most recent year when renovations or improvements were made.",
     )
 
     class Config:

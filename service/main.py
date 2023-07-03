@@ -14,11 +14,6 @@ app = FastAPI(
 models.Base.metadata.create_all(bind=engine)
 
 
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request, exc):
-    return {"detail": exc.errors(), "body": exc.body}
-
-
 # Dependency
 def get_db():
     try:
