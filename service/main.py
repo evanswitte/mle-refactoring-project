@@ -14,7 +14,6 @@ app = FastAPI(
 models.Base.metadata.create_all(bind=engine)
 
 
-
 # Dependency
 def get_db():
     try:
